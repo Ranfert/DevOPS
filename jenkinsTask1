@@ -1,0 +1,30 @@
+pipeline{
+    agent {label 'sudoHome'}
+    
+        stages{
+        stage('install'){
+            steps{
+               sh '''
+               pwd
+               cp -r -n /home/ranfert/test .
+               cd test
+               BUILD_ID=dontKillMe vagrant up 
+               vagrant provision
+               '''
+            }
+        }
+        stage('docker tomcat'){
+            steps{
+                sh '''
+                docker --version
+                docker pull tomcat 
+                docker run -d --name tomcat tomcat 
+                docker status
+                '''
+                
+                      }
+        }
+    
+    }
+    
+}
