@@ -1,0 +1,16 @@
+---
+- name: Update apt
+  become: yes
+  apt:
+    update-cache: yes
+    cache_valid_time: 3600
+
+- name: Python3-apt install
+  become: yes
+  apt:
+    name: python3-apt
+
+- name: docker install
+  become: yes
+  apt:
+    name: docker.io
