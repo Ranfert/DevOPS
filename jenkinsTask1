@@ -1,24 +1,28 @@
 pipeline{
-    agent {label 'sudoHome'}
+    //agent {label 'sudoHome'}
     
         stages{
         stage('install'){
             steps{
-               sh '''
+               
+            sh '''
                git clone git@github.com:Ranfert/DevOPS.git
                cd DevOPS
                vagrant box add bento/ubuntu-18.04
-               BUILD_ID=dontKillMe vagrant up
+               BUILD_ID=dontKillMe vagrant up 
+               vagrant ssh jenkinsUbuntu
                '''
             }
         }
         stage('docker tomcat'){
             steps{
                 sh '''
+                
                 docker --version
                 docker pull tomcat 
                 docker run -d --name tomcat tomcat 
                 docker ps
+                exit
                 '''
                 
                       }
