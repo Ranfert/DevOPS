@@ -8,7 +8,6 @@ pipeline{
                git clone git@github.com:Ranfert/DevOPS.git
                cd DevOPS
                vagrant box add bento/ubuntu-18.04
-               vagrant init bento/ubuntu-18.04
                BUILD_ID=dontKillMe vagrant up 
                vagrant provision
                '''
