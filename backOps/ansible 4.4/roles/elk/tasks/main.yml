@@ -1,0 +1,33 @@
+---
+- name: elastic key-add
+  become: yes
+  shell: wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+
+- name: elastic repo-add
+  become: yes
+  shell: echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" |  tee -a /etc/apt/sources.list.d/elastic-6.x.list
+
+- name: elasticsearch install
+  become: yes
+  apt:
+    name: elasticsearch
+    update-cache: yes
+
+- name: elastic plugins royrusso/elasticsearch-HQ
+  become: yes
+  shell: /usr/share/elasticsearch/bin
+
+
+#- name: kibana install
+#  become: yes
+#  apt:
+#    name: kibana
+
+
+
+
+- name: logstash install
+  become: yes
+  apt:
+    name: logstash
+    update_cache: yes

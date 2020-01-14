@@ -1,0 +1,20 @@
+---
+
+- name: java install
+  become: yes
+  apt:
+    name: default-jre
+
+- name: update alternatives for java
+  alternatives:
+    name: java
+    path: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+    link: /usr/bin/java
+    priority: 20000
+
+- name: set java home as environment variable
+  become: yes
+  blockinfile:
+    insertafter: EOF
+    path: /etc/environment
+    block: JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java

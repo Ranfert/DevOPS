@@ -1,0 +1,10 @@
+{"builders": [
+{
+"communicator": "ssh",
+"source_path": "bento/ubuntu-18.04",
+"provider": "virtualbox",
+"add_force": true,
+"type": "vagrant"
+}
+]
+}

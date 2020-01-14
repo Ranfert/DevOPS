@@ -1,0 +1,5 @@
+---
+
+- name: java-home
+  become: yes
+  script: javaScript.sh
