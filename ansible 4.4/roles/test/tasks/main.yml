@@ -1,0 +1,14 @@
+---
+- name: ntp
+  become: yes
+  apt:
+    name: ntp
+    state: present
+
+- name: ntp config
+  become: yes
+  template:
+    src: ntp.config.j2
+    dest: /etc/ntp.conf
+    mode: 0644
+  notify: restart ntp

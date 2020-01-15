@@ -1,0 +1,18 @@
+---
+- name: ntp install
+  become: yes
+  apt:
+    name: ntp
+    state: present
+
+- name: set timezone
+  become: yes
+  command: timedatectl set-timezone Europe/Minsk
+
+- name: ntp config
+  become: yes
+  template:
+    src: ntp.config.j2
+    dest: /etc/ntp.conf
+    mode: 0644
+  notify: restart ntp
