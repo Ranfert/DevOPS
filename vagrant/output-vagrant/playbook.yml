@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: false
+  roles:
+    - apt
+    - nginx
+    #- ntp
+    #- haproxy
+    #- monit
+    - java
+    #- elk

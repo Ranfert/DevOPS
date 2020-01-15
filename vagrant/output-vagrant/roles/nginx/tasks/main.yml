@@ -1,0 +1,6 @@
+---
+
+- name: java install
+  become: yes
+  apt:
+    name: nginx
