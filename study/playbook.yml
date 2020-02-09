@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: false
+  vars:
+    - mysql_root_password: "vagrant"
+  roles:
+    - apt
+    - nginx
+    - mysql
+    - php

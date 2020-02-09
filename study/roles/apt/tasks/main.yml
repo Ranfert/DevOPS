@@ -1,0 +1,13 @@
+---
+- name: Update apt
+  become: yes
+  force_apt_get: yes
+  apt:
+    update-cache: yes
+    cache_valid_time: 3600
+
+- name: Python3-apt install
+  become: yes
+  force_apt_get: yes
+  apt:
+    name: python3-apt
